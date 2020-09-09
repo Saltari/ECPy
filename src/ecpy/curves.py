@@ -507,7 +507,7 @@ class TwistedEdwardCurve(Curve):
         """ Built an new short twisted Edward curve with the provided parameters.  """
         self._domain = {}
         self._set(domain, ('name','type','size',
-                              'a','d','field','generator','order'))
+                              'a','d','field','generator','order','cofactor'))
 
     def _coord_size(self):
         if self.name == 'Ed25519':
@@ -765,7 +765,7 @@ class MontgomeryCurve(Curve):
         """ Built an new short twisted Edward curve with the provided parameters.  """
         self._domain = {}
         self._set(domain, ('name','type','size',
-                           'a','b','field','generator','order'))
+                           'a','b','field','generator','order','cofactor'))
         #inv4 = pow(4,p-2,p)
         #self.a24  = ((self.a+2)*inv4)%p
         self.a24  = (self.a+2)//4
