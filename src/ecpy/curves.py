@@ -326,7 +326,7 @@ class WeierstrassCurve(Curve):
     def __init__(self, domain):
         """ Built an new short Weierstrass curve with the provided parameters. """
         self._domain = {}
-        self._set(domain, ('name','type', 'size',
+        self._set(domain, ('name','type', 'size','length',
                               'a','b','field','generator','order','cofactor'))
 
 
@@ -506,7 +506,7 @@ class TwistedEdwardCurve(Curve):
     def __init__(self, domain):
         """ Built an new short twisted Edward curve with the provided parameters.  """
         self._domain = {}
-        self._set(domain, ('name','type','size',
+        self._set(domain, ('name','type','size','length',
                               'a','d','field','generator','order','cofactor'))
 
     def _coord_size(self):
@@ -764,7 +764,7 @@ class MontgomeryCurve(Curve):
     def __init__(self, domain):
         """ Built an new short twisted Edward curve with the provided parameters.  """
         self._domain = {}
-        self._set(domain, ('name','type','size',
+        self._set(domain, ('name','type','size','length',
                            'a','b','field','generator','order','cofactor'))
         #inv4 = pow(4,p-2,p)
         #self.a24  = ((self.a+2)*inv4)%p
