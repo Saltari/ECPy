@@ -78,4 +78,4 @@ class ECPrivateKey:
         return "ECPrivateKey:\n  d: %x" % self.d
 
     def __bytes__(self):
-        return self.d.to_bytes(self.W.curve.length, 'big')
+        return self.d.to_bytes(self.curve.length, 'big')
