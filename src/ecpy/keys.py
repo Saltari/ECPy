@@ -19,7 +19,7 @@ import ecpy.curves
 
 class ECPublicKey:
     """ Public EC key.
-    
+
     Can be used for both ECDSA and EDDSA signature
 
     Attributes:
@@ -28,7 +28,7 @@ class ECPublicKey:
     Args:
        W (Point): public key value
     """
-    
+
     def __init__(self, W):
         self.W = W
 
@@ -38,10 +38,13 @@ class ECPublicKey:
 
     def __str__(self):
         return "ECPublicKey:\n  x: %x\n  y: %x" % (self.W.x,self.W.y)
-        
+
+    def __bytes__(self):
+        return b"\x04"+self.W.x.to_bytes(self.W.curve.length, 'big')+self.W.y.to_bytes(self.W.curve.length, 'big')
+
 class ECPrivateKey:
     """ Public EC key.
-    
+
     Can be used for both ECDSA and EDDSA signature
 
     Attributes
@@ -52,17 +55,17 @@ class ECPrivateKey:
        d (int):        private key value
        curve (Curve) : curve
     """
-    
+
     def __init__(self, d,curve):
         self.d = int(d)
         self.curve = curve
-    
+
     def get_public_key(self):
-        """ Returns the public key corresponding to this private key 
-        
+        """ Returns the public key corresponding to this private key
+
         This method considers the private key the generator multiplier and
         return pv*Generator in all cases.
-        
+
         For specific derivation such as in EdDSA, see ecpy.eddsa.get_public_key
 
         Returns:
@@ -73,3 +76,6 @@ class ECPrivateKey:
 
     def __str__(self):
         return "ECPrivateKey:\n  d: %x" % self.d
+
+    def __bytes__(self):
+        return self.d.to_bytes(self.W.curve.length, 'big')
