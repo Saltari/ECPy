@@ -23,7 +23,7 @@ curves = [
     {
         'name':      "stark256",
         'type':      WEIERSTRASS,
-        'size':      256,
+        'size':      252,
         'length':    32,
         'field':     0x0800000000000011000000000000000000000000000000000000000000000001,
         'generator': (0x01ef15c18599971b7beced415a40f0c7deacfd9b0d1819e03d723d8bc943cfca,
